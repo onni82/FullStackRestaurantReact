@@ -1,4 +1,3 @@
-import React from "react";
 import { useBooking } from "../context/BookingContext";
 import { Button, Card } from "react-bootstrap";
 
