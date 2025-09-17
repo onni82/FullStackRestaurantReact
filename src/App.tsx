@@ -1,4 +1,3 @@
-import React from "react";
 import SelectDate from "./components/SelectDate";
 import SelectTable from "./components/SelectTable";
 import CustomerForm from "./components/CustomerForm";
