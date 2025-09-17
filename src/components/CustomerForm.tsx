@@ -5,12 +5,12 @@ import { combineDateAndTimeToIso } from "../utils/date";
 import { Form, Button } from "react-bootstrap";
 import SpinnerInline from "./SpinnerInline";
 
-export default function CustomerForm(){
-  const { date, time, guests, selectedTable, customer, setCustomer, setBookingResult, next, back, reset } = useBooking();
+export default function CustomerForm() {
+  const { date, time, guests, selectedTable, customer, setCustomer, setBookingResult, next, back } = useBooking();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const submit = async (e) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
@@ -25,21 +25,17 @@ export default function CustomerForm(){
 
     setLoading(true);
     try {
-      // create or reuse customer: createCustomer returns the created customer with id
       const createdCustomer = await createCustomer({ name: customer.name, phoneNumber: customer.phoneNumber });
-
-      // create booking payload expected by API:
       const bookingDto = {
         tableId: selectedTable.id,
         customerId: createdCustomer.id,
         start: iso,
-        guests: guests
+        guests: guests,
       };
-
       const createdBooking = await createBooking(bookingDto);
       setBookingResult(createdBooking);
-      next(); // go to confirmation
-    } catch (err) {
+      next();
+    } catch (err: any) {
       console.error(err);
       if (err.status === 400) {
         setError(err.body?.error || "Valideringsfel från servern.");
