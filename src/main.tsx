@@ -5,7 +5,7 @@ import { BookingProvider } from './context/BookingContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BookingProvider>
     <App />
