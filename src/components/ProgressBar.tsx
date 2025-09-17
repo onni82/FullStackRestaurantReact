@@ -1,4 +1,3 @@
-import React from "react";
 import { useBooking } from "../context/BookingContext";
 import { ProgressBar as BSProgress } from "react-bootstrap";
 

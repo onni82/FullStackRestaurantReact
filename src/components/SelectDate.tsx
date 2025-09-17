@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useBooking } from "../context/BookingContext";
 import { combineDateAndTimeToIso } from "../utils/date";
 import { getAvailableTables } from "../services/ApiService";
@@ -29,7 +29,7 @@ export default function SelectDate(){
       setAvailableTables(res || []);
       if (!res || res.length === 0) setError("Inga lediga bord för valt tid.");
       else next();
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
       setError(err?.body?.error || "Kunde inte hämta tillgängliga bord.");
     } finally {
