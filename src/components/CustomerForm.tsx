@@ -28,7 +28,7 @@ export default function CustomerForm() {
       const createdCustomer = await createCustomer({ name: customer.name, phoneNumber: customer.phoneNumber });
       const bookingDto = {
         tableId: selectedTable.id,
-        customerId: createdCustomer.id,
+        customerId: createdCustomer.id!,
         start: iso,
         guests: guests,
       };
